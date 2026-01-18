@@ -7,73 +7,74 @@ import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 import { LineChart, Line, BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
-const revenueData = [
-  { month: 'Янв', value: 4200, growth: 12 },
-  { month: 'Фев', value: 5100, growth: 21 },
-  { month: 'Мар', value: 6800, growth: 33 },
-  { month: 'Апр', value: 8200, growth: 21 },
-  { month: 'Май', value: 9500, growth: 16 },
-  { month: 'Июн', value: 12100, growth: 27 }
+const playerData = [
+  { month: 'Янв', value: 450, growth: 12 },
+  { month: 'Фев', value: 620, growth: 38 },
+  { month: 'Мар', value: 890, growth: 44 },
+  { month: 'Апр', value: 1150, growth: 29 },
+  { month: 'Май', value: 1420, growth: 23 },
+  { month: 'Июн', value: 1680, growth: 18 }
 ];
 
-const analyticsData = [
-  { name: 'Активные клиенты', value: 2847 },
-  { name: 'Новые лиды', value: 1254 },
-  { name: 'Закрытые сделки', value: 892 },
-  { name: 'В работе', value: 1955 }
+const serverStats = [
+  { name: 'Онлайн игроков', value: 1680 },
+  { name: 'Активных фракций', value: 24 },
+  { name: 'Бизнесов', value: 156 },
+  { name: 'Транспорта', value: 892 }
 ];
 
-const pieData = [
-  { name: 'Новые', value: 35, color: '#00d9ff' },
-  { name: 'В работе', value: 45, color: '#9b87f5' },
-  { name: 'Закрыты', value: 20, color: '#ff00aa' }
+const factionData = [
+  { name: 'Полиция', value: 25, color: '#00d9ff' },
+  { name: 'Мафия', value: 30, color: '#9b87f5' },
+  { name: 'Банды', value: 25, color: '#ff00aa' },
+  { name: 'Гос. структуры', value: 20, color: '#00ff88' }
 ];
 
-const casesData = [
+const reviewsData = [
   {
     id: 1,
-    company: 'TechCorp Solutions',
-    result: '+340% конверсии',
-    description: 'Автоматизация воронки продаж и интеграция с маркетинговыми каналами',
-    metrics: { leads: '+450%', sales: '+340%', time: '-65%' }
+    player: 'Александр_Соколов',
+    rating: '⭐⭐⭐⭐⭐',
+    description: 'Играю уже полгода - лучший CRMP сервер! Атмосфера, РП на высоте, адекватная администрация',
+    metrics: { rp: '10/10', admin: '9/10', online: '10/10' }
   },
   {
     id: 2,
-    company: 'Digital Agency PRO',
-    result: '+280% выручки',
-    description: 'Внедрение аналитической системы и прогнозирования продаж',
-    metrics: { leads: '+320%', sales: '+280%', time: '-58%' }
+    player: 'Дмитрий_Волков',
+    rating: '⭐⭐⭐⭐⭐',
+    description: 'Огромная карта России, реалистичная экономика, все как в жизни. Рекомендую всем!',
+    metrics: { rp: '10/10', admin: '10/10', online: '9/10' }
   },
   {
     id: 3,
-    company: 'E-commerce Giant',
-    result: '-70% времени на обработку',
-    description: 'Автоматизация обработки заказов и клиентского сервиса',
-    metrics: { leads: '+210%', sales: '+190%', time: '-70%' }
+    player: 'Мария_Петрова',
+    rating: '⭐⭐⭐⭐⭐',
+    description: 'Отличный сервер для серьезной игры. Порядок на дорогах, много фракций, развитая система',
+    metrics: { rp: '9/10', admin: '10/10', online: '10/10' }
   }
 ];
 
-const blogPosts = [
+const newsData = [
   {
     id: 1,
-    title: 'Как ИИ меняет CRM-системы в 2026 году',
+    title: 'Обновление 2.5: Новые локации и бизнесы',
     date: '15 января 2026',
-    category: 'Инновации',
-    excerpt: 'Искусственный интеллект революционизирует способы взаимодействия с клиентами...'
+    category: 'Обновления',
+    excerpt: 'Добавлены новые районы Москвы, 15 видов бизнеса и улучшенная система недвижимости...'
   },
   {
     id: 2,
-    title: 'Топ-10 метрик для B2B продаж',
+    title: 'Турнир фракций: Призовой фонд 500.000₽',
     date: '12 января 2026',
-    category: 'Аналитика',
-    excerpt: 'Разбираем ключевые показатели эффективности для отдела продаж...'
+    category: 'События',
+    excerpt: 'Стартует ежемесячный турнир между фракциями. Регистрация открыта!'
   },
   {
     id: 3,
-    title: 'Автоматизация маркетинга: практическое руководство',
+    title: 'Гайд: Как начать играть на PRP CRMP',
     date: '08 января 2026',
-    category: 'Маркетинг',
-    excerpt: 'Пошаговая инструкция по настройке автоматических воронок...'
+    category: 'Гайды',
+    excerpt: 'Подробное руководство для новичков - от регистрации до первых денег...'
   }
 ];
 
@@ -156,33 +157,33 @@ function Index() {
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-5xl mx-auto text-center space-y-8 animate-fade-in">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-tight">
-              <span className="glow-text">Будущее CRM</span>
+              <span className="glow-text">PRP CRMP</span>
               <br />
               <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                уже здесь
+                Россия на ладони
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Революционная платформа для управления отношениями с клиентами. 
-              Искусственный интеллект, прогнозная аналитика и автоматизация нового уровня.
+              Огромная карта России, родная атмосфера старого доброго CRMP, порядок на дорогах и высокий уровень RolePlay. 
+              Стань частью легендарного сообщества!
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
               <Button size="lg" className="bg-gradient-to-r from-primary via-secondary to-accent glow-box text-lg font-heading font-semibold px-8 py-6">
-                <Icon name="Rocket" size={20} className="mr-2" />
-                Начать бесплатно
+                <Icon name="Gamepad2" size={20} className="mr-2" />
+                Начать играть
               </Button>
               <Button size="lg" variant="outline" className="glow-border text-lg font-heading font-semibold px-8 py-6">
-                <Icon name="Play" size={20} className="mr-2" />
-                Смотреть демо
+                <Icon name="Youtube" size={20} className="mr-2" />
+                Трейлер сервера
               </Button>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16">
               {[
-                { value: '50K+', label: 'Активных пользователей' },
-                { value: '99.9%', label: 'Uptime' },
-                { value: '24/7', label: 'Поддержка' },
-                { value: '340%', label: 'Рост конверсий' }
+                { value: '1680+', label: 'Онлайн игроков' },
+                { value: '24/7', label: 'Сервер работает' },
+                { value: '156', label: 'Активных бизнесов' },
+                { value: '99.9%', label: 'Uptime' }
               ].map((stat, idx) => (
                 <div key={idx} className="text-center space-y-2">
                   <div className="text-3xl md:text-4xl font-heading font-bold text-primary">{stat.value}</div>
@@ -198,44 +199,44 @@ function Index() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl md:text-5xl font-heading font-bold">
-              <span className="glow-text">Возможности</span> платформы
+              <span className="glow-text">Возможности</span> сервера
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Все инструменты для эффективной работы с клиентами в одной системе
+              Всё для полного погружения в атмосферу криминальной России
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                icon: 'Brain',
-                title: 'ИИ-ассистент',
-                description: 'Умный помощник анализирует поведение клиентов и предлагает оптимальные действия'
-              },
-              {
-                icon: 'TrendingUp',
-                title: 'Прогнозная аналитика',
-                description: 'Предсказывайте продажи и поведение клиентов с точностью до 95%'
-              },
-              {
-                icon: 'Zap',
-                title: 'Автоматизация',
-                description: 'Автоматические воронки, рассылки и обработка лидов без участия человека'
+                icon: 'Map',
+                title: 'Огромная карта России',
+                description: 'Москва, Питер, регионы - исследуйте масштабную карту с реалистичными локациями'
               },
               {
                 icon: 'Users',
-                title: 'Управление командой',
-                description: 'Распределение задач, контроль эффективности и мотивация сотрудников'
+                title: '24 активных фракции',
+                description: 'Полиция, мафия, банды, госструктуры - выбери свой путь в криминальном мире'
               },
               {
-                icon: 'BarChart3',
-                title: 'Дашборды реального времени',
-                description: 'Визуализация всех ключевых метрик в режиме реального времени'
+                icon: 'Building2',
+                title: '156 видов бизнеса',
+                description: 'От киоска до завода - создай бизнес-империю и зарабатывай миллионы'
               },
               {
-                icon: 'Webhook',
-                title: 'Интеграции',
-                description: 'Подключение к 500+ сервисам через готовые интеграции и API'
+                icon: 'Car',
+                title: 'Порядок на дорогах',
+                description: 'ПДД, штрафы, погони - реалистичная система дорожного движения'
+              },
+              {
+                icon: 'Shield',
+                title: 'Высокий уровень RP',
+                description: 'Строгие правила РП, адекватная администрация, атмосфера как в 2010-х'
+              },
+              {
+                icon: 'Sparkles',
+                title: 'Уникальные системы',
+                description: 'Мафиозные войны, наркотрафик, казино, тюрьма и многое другое'
               }
             ].map((feature, idx) => (
               <Card key={idx} className="glow-border bg-card/50 backdrop-blur hover:scale-105 transition-transform duration-300">
@@ -258,30 +259,30 @@ function Index() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl md:text-5xl font-heading font-bold">
-              Аналитика и <span className="glow-text">Дашборды</span>
+              Статистика и <span className="glow-text">Аналитика</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Полный контроль над бизнес-процессами с интерактивными дашбордами
+              Полная статистика сервера и динамика роста онлайна
             </p>
           </div>
 
-          <Tabs defaultValue="revenue" className="max-w-6xl mx-auto">
+          <Tabs defaultValue="players" className="max-w-6xl mx-auto">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
-              <TabsTrigger value="revenue">Выручка</TabsTrigger>
-              <TabsTrigger value="metrics">Метрики</TabsTrigger>
-              <TabsTrigger value="pipeline">Воронка</TabsTrigger>
-              <TabsTrigger value="team">Команда</TabsTrigger>
+              <TabsTrigger value="players">Онлайн</TabsTrigger>
+              <TabsTrigger value="stats">Статистика</TabsTrigger>
+              <TabsTrigger value="factions">Фракции</TabsTrigger>
+              <TabsTrigger value="economy">Экономика</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="revenue" className="space-y-6">
+            <TabsContent value="players" className="space-y-6">
               <Card className="glow-border">
                 <CardHeader>
-                  <CardTitle className="font-heading">Динамика выручки</CardTitle>
-                  <CardDescription>Рост выручки по месяцам в 2026 году</CardDescription>
+                  <CardTitle className="font-heading">Рост онлайна</CardTitle>
+                  <CardDescription>Динамика роста игроков за последние 6 месяцев</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ResponsiveContainer width="100%" height={350}>
-                    <AreaChart data={revenueData}>
+                    <AreaChart data={playerData}>
                       <defs>
                         <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
                           <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8}/>
@@ -305,15 +306,15 @@ function Index() {
               </Card>
             </TabsContent>
 
-            <TabsContent value="metrics" className="space-y-6">
+            <TabsContent value="stats" className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="glow-border">
                   <CardHeader>
-                    <CardTitle className="font-heading">Ключевые показатели</CardTitle>
+                    <CardTitle className="font-heading">Ключевые показатели сервера</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <ResponsiveContainer width="100%" height={300}>
-                      <BarChart data={analyticsData}>
+                      <BarChart data={serverStats}>
                         <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                         <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" angle={-45} textAnchor="end" height={100} />
                         <YAxis stroke="hsl(var(--muted-foreground))" />
@@ -332,13 +333,13 @@ function Index() {
 
                 <Card className="glow-border">
                   <CardHeader>
-                    <CardTitle className="font-heading">Распределение сделок</CardTitle>
+                    <CardTitle className="font-heading">Распределение по фракциям</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <ResponsiveContainer width="100%" height={300}>
                       <PieChart>
                         <Pie
-                          data={pieData}
+                          data={factionData}
                           cx="50%"
                           cy="50%"
                           labelLine={false}
@@ -347,7 +348,7 @@ function Index() {
                           fill="hsl(var(--primary))"
                           dataKey="value"
                         >
-                          {pieData.map((entry, index) => (
+                          {factionData.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={entry.color} />
                           ))}
                         </Pie>
@@ -359,19 +360,19 @@ function Index() {
               </div>
             </TabsContent>
 
-            <TabsContent value="pipeline" className="space-y-6">
+            <TabsContent value="factions" className="space-y-6">
               <Card className="glow-border">
                 <CardHeader>
-                  <CardTitle className="font-heading">Воронка продаж</CardTitle>
-                  <CardDescription>Конверсия на каждом этапе</CardDescription>
+                  <CardTitle className="font-heading">Активность фракций</CardTitle>
+                  <CardDescription>Количество активных участников по фракциям</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     {[
-                      { stage: 'Лиды', count: 1254, percent: 100, color: 'bg-primary' },
-                      { stage: 'Квалификация', count: 892, percent: 71, color: 'bg-secondary' },
-                      { stage: 'Предложение', count: 567, percent: 45, color: 'bg-accent' },
-                      { stage: 'Закрыто', count: 342, percent: 27, color: 'bg-primary' }
+                      { stage: 'Полиция LSPD/SFPD', count: 420, percent: 100, color: 'bg-primary' },
+                      { stage: 'Мафия', count: 504, percent: 90, color: 'bg-secondary' },
+                      { stage: 'Банды Grove/Ballas', count: 420, percent: 75, color: 'bg-accent' },
+                      { stage: 'Гос. структуры', count: 336, percent: 60, color: 'bg-primary' }
                     ].map((item, idx) => (
                       <div key={idx} className="space-y-2">
                         <div className="flex justify-between text-sm">
@@ -391,12 +392,12 @@ function Index() {
               </Card>
             </TabsContent>
 
-            <TabsContent value="team" className="space-y-6">
+            <TabsContent value="economy" className="space-y-6">
               <div className="grid md:grid-cols-3 gap-6">
                 {[
-                  { name: 'Алексей Иванов', role: 'Топ менеджер', sales: 142, target: 150, avatar: '👨‍💼' },
-                  { name: 'Мария Петрова', role: 'Senior Sales', sales: 128, target: 130, avatar: '👩‍💼' },
-                  { name: 'Дмитрий Сидоров', role: 'Sales Manager', sales: 95, target: 100, avatar: '👨‍💻' }
+                  { name: '💵 Наличные', role: 'В обороте', sales: 142000000, target: 150000000, avatar: '💵' },
+                  { name: '🏦 Банки', role: 'На счетах', sales: 890000000, target: 1000000000, avatar: '🏦' },
+                  { name: '💎 Бизнесы', role: 'Оборот/сутки', sales: 45000000, target: 50000000, avatar: '💎' }
                 ].map((member, idx) => (
                   <Card key={idx} className="glow-border">
                     <CardHeader>
@@ -412,8 +413,8 @@ function Index() {
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="flex justify-between text-sm">
-                        <span>Продажи</span>
-                        <span className="font-bold text-primary">{member.sales}/{member.target}</span>
+                        <span>{member.role}</span>
+                        <span className="font-bold text-primary">{(member.sales/1000000).toFixed(0)}М/{(member.target/1000000).toFixed(0)}М₽</span>
                       </div>
                       <div className="h-2 bg-muted rounded-full overflow-hidden">
                         <div 
@@ -434,40 +435,40 @@ function Index() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl md:text-5xl font-heading font-bold">
-              Кейсы <span className="glow-text">наших клиентов</span>
+              Отзывы <span className="glow-text">игроков</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Реальные результаты компаний, которые выбрали PRP CRMP
+              Что говорят о нас игроки PRP CRMP
             </p>
           </div>
 
           <div className="space-y-6 max-w-5xl mx-auto">
-            {casesData.map((caseItem) => (
+            {reviewsData.map((caseItem) => (
               <Card key={caseItem.id} className="glow-border bg-card/50 backdrop-blur hover:scale-[1.02] transition-transform duration-300">
                 <CardHeader>
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
-                      <CardTitle className="text-2xl font-heading">{caseItem.company}</CardTitle>
+                      <CardTitle className="text-2xl font-heading">{caseItem.player}</CardTitle>
                       <CardDescription className="text-base mt-2">{caseItem.description}</CardDescription>
                     </div>
-                    <div className="text-3xl font-heading font-bold text-primary glow-text whitespace-nowrap">
-                      {caseItem.result}
+                    <div className="text-2xl font-heading font-bold text-primary glow-text whitespace-nowrap">
+                      {caseItem.rating}
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-3 gap-4">
                     <div className="text-center p-4 rounded-lg bg-muted/30">
-                      <div className="text-2xl font-bold text-primary">{caseItem.metrics.leads}</div>
-                      <div className="text-sm text-muted-foreground mt-1">Лидов</div>
+                      <div className="text-2xl font-bold text-primary">{caseItem.metrics.rp}</div>
+                      <div className="text-sm text-muted-foreground mt-1">Уровень RP</div>
                     </div>
                     <div className="text-center p-4 rounded-lg bg-muted/30">
-                      <div className="text-2xl font-bold text-secondary">{caseItem.metrics.sales}</div>
-                      <div className="text-sm text-muted-foreground mt-1">Продаж</div>
+                      <div className="text-2xl font-bold text-secondary">{caseItem.metrics.admin}</div>
+                      <div className="text-sm text-muted-foreground mt-1">Администрация</div>
                     </div>
                     <div className="text-center p-4 rounded-lg bg-muted/30">
-                      <div className="text-2xl font-bold text-accent">{caseItem.metrics.time}</div>
-                      <div className="text-sm text-muted-foreground mt-1">Времени</div>
+                      <div className="text-2xl font-bold text-accent">{caseItem.metrics.online}</div>
+                      <div className="text-sm text-muted-foreground mt-1">Онлайн</div>
                     </div>
                   </div>
                 </CardContent>
@@ -481,15 +482,15 @@ function Index() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl md:text-5xl font-heading font-bold">
-              <span className="glow-text">Блог</span> и статьи
+              <span className="glow-text">Новости</span> и обновления
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Последние новости и полезные материалы о CRM и продажах
+              Следите за последними обновлениями и событиями сервера
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {blogPosts.map((post) => (
+            {newsData.map((post) => (
               <Card key={post.id} className="glow-border bg-card/50 backdrop-blur hover:scale-105 transition-transform duration-300">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-3">
@@ -505,7 +506,7 @@ function Index() {
                 <CardContent>
                   <CardDescription className="text-base">{post.excerpt}</CardDescription>
                   <Button variant="link" className="mt-4 p-0 text-primary">
-                    Читать далее
+                    Подробнее
                     <Icon name="ArrowRight" size={16} className="ml-2" />
                   </Button>
                 </CardContent>
@@ -520,10 +521,10 @@ function Index() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center space-y-4 mb-12">
               <h2 className="text-4xl md:text-5xl font-heading font-bold">
-                <span className="glow-text">Свяжитесь</span> с нами
+                <span className="glow-text">Связь</span> с нами
               </h2>
               <p className="text-xl text-muted-foreground">
-                Готовы начать? Оставьте заявку и наш менеджер свяжется с вами
+                Вопросы, предложения или нужна помощь? Мы всегда на связи!
               </p>
             </div>
 
@@ -552,26 +553,26 @@ function Index() {
                     />
                   </div>
                   <Button className="w-full bg-gradient-to-r from-primary via-secondary to-accent glow-box font-heading font-semibold text-lg py-6">
-                    <Icon name="Send" size={20} className="mr-2" />
-                    Отправить заявку
+                    <Icon name="MessageCircle" size={20} className="mr-2" />
+                    Отправить сообщение
                   </Button>
                 </form>
 
                 <div className="grid md:grid-cols-3 gap-6 mt-12 pt-12 border-t border-border">
                   <div className="text-center space-y-2">
-                    <Icon name="Mail" size={24} className="mx-auto text-primary" />
-                    <div className="text-sm font-medium">Email</div>
-                    <div className="text-sm text-muted-foreground">contact@prpcrmp.com</div>
+                    <Icon name="MessageSquare" size={24} className="mx-auto text-primary" />
+                    <div className="text-sm font-medium">Discord</div>
+                    <div className="text-sm text-muted-foreground">discord.gg/prpcrmp</div>
                   </div>
                   <div className="text-center space-y-2">
-                    <Icon name="Phone" size={24} className="mx-auto text-primary" />
-                    <div className="text-sm font-medium">Телефон</div>
-                    <div className="text-sm text-muted-foreground">+7 (495) 123-45-67</div>
+                    <Icon name="Send" size={24} className="mx-auto text-primary" />
+                    <div className="text-sm font-medium">Telegram</div>
+                    <div className="text-sm text-muted-foreground">@prpcrmp_official</div>
                   </div>
                   <div className="text-center space-y-2">
-                    <Icon name="MapPin" size={24} className="mx-auto text-primary" />
-                    <div className="text-sm font-medium">Офис</div>
-                    <div className="text-sm text-muted-foreground">Москва, БЦ Технопарк</div>
+                    <Icon name="Users" size={24} className="mx-auto text-primary" />
+                    <div className="text-sm font-medium">Форум</div>
+                    <div className="text-sm text-muted-foreground">forum.prpcrmp.ru</div>
                   </div>
                 </div>
               </CardContent>
