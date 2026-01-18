@@ -8,16 +8,16 @@ import Icon from '@/components/ui/icon';
 import { LineChart, Line, BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 const playerData = [
-  { month: 'Янв', value: 450, growth: 12 },
-  { month: 'Фев', value: 620, growth: 38 },
-  { month: 'Мар', value: 890, growth: 44 },
-  { month: 'Апр', value: 1150, growth: 29 },
-  { month: 'Май', value: 1420, growth: 23 },
-  { month: 'Июн', value: 1680, growth: 18 }
+  { month: 'Янв', value: 1, growth: 0 },
+  { month: 'Фев', value: 2, growth: 100 },
+  { month: 'Мар', value: 3, growth: 50 },
+  { month: 'Апр', value: 4, growth: 33 },
+  { month: 'Май', value: 5, growth: 25 },
+  { month: 'Июн', value: 6, growth: 20 }
 ];
 
 const serverStats = [
-  { name: 'Онлайн игроков', value: 1680 },
+  { name: 'Онлайн игроков', value: 6 },
   { name: 'Активных фракций', value: 24 },
   { name: 'Бизнесов', value: 156 },
   { name: 'Транспорта', value: 892 }
@@ -81,9 +81,17 @@ const newsData = [
 function Index() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [onlinePlayers, setOnlinePlayers] = useState(6);
 
   useEffect(() => {
     document.documentElement.classList.add('dark');
+    
+    const updateOnline = () => {
+      setOnlinePlayers(Math.floor(Math.random() * 6) + 1);
+    };
+    
+    const interval = setInterval(updateOnline, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -164,7 +172,7 @@ function Index() {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Огромная карта России, родная атмосфера старого доброго CRMP, порядок на дорогах и высокий уровень RolePlay. 
+              Огромная карта России, родная атмосфера как в 2021 году, порядок на дорогах и высокий уровень RolePlay. 
               Стань частью легендарного сообщества!
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
@@ -179,8 +187,8 @@ function Index() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16">
-              {[
-                { value: '1680+', label: 'Онлайн игроков' },
+              [
+                { value: `${onlinePlayers}/6`, label: 'Онлайн игроков' },
                 { value: '24/7', label: 'Сервер работает' },
                 { value: '156', label: 'Активных бизнесов' },
                 { value: '99.9%', label: 'Uptime' }
@@ -231,7 +239,7 @@ function Index() {
               {
                 icon: 'Shield',
                 title: 'Высокий уровень RP',
-                description: 'Строгие правила РП, адекватная администрация, атмосфера как в 2010-х'
+                description: 'Строгие правила РП, адекватная администрация, атмосфера как в 2021 году'
               },
               {
                 icon: 'Sparkles',
