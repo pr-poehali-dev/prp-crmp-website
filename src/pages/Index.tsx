@@ -82,6 +82,7 @@ function Index() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [onlinePlayers, setOnlinePlayers] = useState(6);
+  const [serverOnline, setServerOnline] = useState(true);
 
   useEffect(() => {
     document.documentElement.classList.add('dark');
@@ -108,11 +109,19 @@ function Index() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-primary/20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-4">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center glow-box">
                 <span className="text-2xl font-bold font-heading">P</span>
               </div>
-              <span className="text-2xl font-bold font-heading glow-text">PRP CRMP</span>
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold font-heading glow-text">PRP CRMP</span>
+                <div className="flex items-center space-x-2 mt-0.5">
+                  <div className={`w-2 h-2 rounded-full ${serverOnline ? 'bg-green-500' : 'bg-red-500'} ${serverOnline ? 'animate-pulse-glow' : ''}`}></div>
+                  <span className="text-xs text-muted-foreground">
+                    {serverOnline ? 'CRMP первый сервер онлайн' : 'CRMP первый сервер оффлайн'}
+                  </span>
+                </div>
+              </div>
             </div>
 
             <button 
@@ -592,11 +601,19 @@ function Index() {
       <footer className="py-12 border-t border-primary/20 bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-4">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center glow-box">
                 <span className="text-2xl font-bold font-heading">P</span>
               </div>
-              <span className="text-xl font-bold font-heading">PRP CRMP</span>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold font-heading">PRP CRMP</span>
+                <div className="flex items-center space-x-2 mt-0.5">
+                  <div className={`w-2 h-2 rounded-full ${serverOnline ? 'bg-green-500' : 'bg-red-500'} ${serverOnline ? 'animate-pulse-glow' : ''}`}></div>
+                  <span className="text-xs text-muted-foreground">
+                    {serverOnline ? 'CRMP первый сервер онлайн' : 'CRMP первый сервер оффлайн'}
+                  </span>
+                </div>
+              </div>
             </div>
 
             <div className="flex items-center space-x-6">
