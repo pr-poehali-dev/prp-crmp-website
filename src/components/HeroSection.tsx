@@ -39,7 +39,7 @@ function HeroSection({ onlinePlayers }: HeroSectionProps) {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16">
-            [
+            {[
               { value: `${onlinePlayers}/6`, label: 'Онлайн игроков' },
               { value: '24/7', label: 'Сервер работает' },
               { value: '156', label: 'Активных бизнесов' },
@@ -49,7 +49,7 @@ function HeroSection({ onlinePlayers }: HeroSectionProps) {
                 <div className="text-3xl md:text-4xl font-heading font-bold text-primary">{stat.value}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
               </div>
-            ))}
+            )))}
           </div>
         </div>
       </div>
